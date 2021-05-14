@@ -84,6 +84,10 @@ click={
  ]
 }
 
+[locale]
+
+translations=PoolStringArray( "res://translations/dialogues_pt_BR.pt_BR.translation" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

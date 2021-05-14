@@ -31,7 +31,7 @@ func _dialogue_input(event):
 
 
 func _on_green_interaction_area_area_clicked():
-  Dialogue.start_dialogue("npc", { "player": $player, "npc": $green })
+  Dialogue.start_dialogue("npc#murder", { "player": $player, "npc": $green })
   Dialogue.set_variable("location", "Beach")
 
 
@@ -56,11 +56,17 @@ func _on_dialogue_finish(_dialogue_name):
   _is_dialogue_in_progress = false
 
 
-func _on_dialogue_variable_changed(variable_name, value, previous_value):
+func _on_dialogue_variable_changed(variable_name, _value, _previous_value):
   print("variable changed: %s" % variable_name)
 
 
 func _on_dialogue_event_triggered(event_name):
-  if event_name == "kill_blue":
-    $blue.queue_free()
-    $blue_interaction_area3.queue_free()
+  match event_name:
+    "kill_blue":
+      $blue.queue_free()
+      $blue_interaction_area3.queue_free()
+    "set_english_lang":
+      TranslationServer.set_locale("en")
+    "set_portuguese_lang":
+      TranslationServer.set_locale("pt_BR")
+

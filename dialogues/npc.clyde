@@ -5,8 +5,48 @@ player: Hello, %npc_name%!
 
 { location }
   npc: What are you doing here in the %location%?
-  { location == "Beach" and not progression_blue_was_killed }
-    player: What??
-    npc: Do you want Blue to go away?
-    player: Yes!
-    npc: Considered done! { trigger kill_blue } { set progression_blue_was_killed = true }
+  { location == "Cave" }
+    player: Just looking for some mushrooms.
+    npc:    Bad luck! I've just finished eating the last one.
+  { location == "Dungeon" }
+    player: I'm kind of lost.
+    npc:    Next time bring a map.
+
+
+== murder
+npc: Hey! How can I help you my friend?
+  + [Blue is becoming a problem...] { when not progression_blue_was_killed }
+    -> kill_blue_option <-
+  * [What is this place?]
+    -> what_is_this_place_option <-
+  * [ Feeling guilty? ] { when progression_blue_was_killed }
+    -> feeling_guilty_option <-
+  > player: Actually, I need to go.
+    -> goodbye_option
+
+
+== kill_blue_option
+npc: I see... Do you want Blue to go away?
+  + [ Yes ]
+    npc: Consider it done! { trigger kill_blue } { set progression_blue_was_killed = true }
+  + [ No ]
+    npc: Next time then!
+<-
+
+
+== what_is_this_place_option
+npc: Not sure. I've just got here.
+<-
+
+
+== feeling_guilty_option
+player: I didn't do anything!
+npc:    Keep saying that!
+<-
+
+
+== goodbye_option
+( shuffle cycle
+  - npc: Ok! See you!
+  - npc: No worries. I'm here if you need anything
+)

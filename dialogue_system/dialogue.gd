@@ -10,15 +10,28 @@ signal event_triggered(event_name)
 var _dialogue
 var _dialogue_box
 var _current_dialogue
+var _current_dialogue_file
+var _current_dialogue_block
 var _current_speakers
 
 func start_dialogue(dialogue_name, speakers = {}):
   _current_dialogue = dialogue_name
+  var dialogue_parts = dialogue_name.split("#")
+  _current_dialogue_file = dialogue_parts[0]
+  if dialogue_parts.size() > 1:
+    _current_dialogue_block = dialogue_parts[1]
+
   _current_speakers = speakers
   _load_dialogue_box()
   _dialogue_box.show()
+  # warning-ignore:return_value_discarded
+  _dialogue_box.connect("option_selected", self, "_on_option_selected")
   _dialogue = ClydeDialogue.new()
-  _dialogue.load_dialogue(dialogue_name)
+
+  if dialogue_parts.size() == 2:
+    _dialogue.load_dialogue(_current_dialogue_file, _current_dialogue_block)
+  else:
+    _dialogue.load_dialogue(_current_dialogue_file)
 
   _load_data(dialogue_name, speakers)
 
@@ -39,14 +52,24 @@ func next_content():
 
   var content = _dialogue.get_content()
   if content == null:
-    Persistence.save_dialogue_data(_current_dialogue, _dialogue.get_data())
-    emit_signal("dialogue_finished", _current_dialogue)
-    _dialogue_box.hide()
-    _current_dialogue = null
+    _finish_dialogue()
+  elif content.type == "options":
+    _dialogue_box.set_options(content)
+    _set_speaker_info(content)
   else:
     _dialogue_box.set_text(content.text)
     _set_speaker_info(content)
 
+
+func _finish_dialogue():
+  Persistence.save_dialogue_data(_current_dialogue, _dialogue.get_data())
+  emit_signal("dialogue_finished", _current_dialogue)
+  _dialogue_box.hide()
+  # warning-ignore:return_value_discarded
+  _dialogue_box.disconnect("option_selected", self, "_on_option_selected")
+  _current_dialogue = null
+  _current_dialogue_file = null
+  _current_dialogue_block = null
 
 
 func _set_speaker_info(content):
@@ -100,3 +123,8 @@ func _notify_variable_changed(variable_name, value, previous_value):
 
 func _notify_event_triggered(event_name):
   emit_signal("event_triggered", event_name)
+
+
+func _on_option_selected(option_index):
+  _dialogue.choose(option_index)
+  next_content()

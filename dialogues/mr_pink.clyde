@@ -9,3 +9,14 @@ player: Hello, Mr. Pink!
 { progression_blue_was_killed }
   player: Did you hear about blue?
   mr_pink: Oh, yeah! Sad news! #sad
+
+mr_pink: Do you want me to talk in which language?
+  + English { trigger set_english_lang }
+  + Portuguese { trigger set_portuguese_lang }
+mr_pink: Ok, these sentences should be translated. $mr_pink_001
+mr_pink: Do they sound ok to you? $mr_pink_002
+mr_pink: I'll go back to english now. $mr_pink_003
+{ trigger set_english_lang }
+mr_pink: That's all I have. Bye!
+
+

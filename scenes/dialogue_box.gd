@@ -34,7 +34,7 @@ func set_speaker_name(speaker_name):
   _speaker_name_field.text = speaker_name if speaker_name != null else  ""
 
 
-func show_options(content):
+func set_options(content):
   for o in _options_container.get_children():
     o.queue_free()
 
@@ -42,11 +42,10 @@ func show_options(content):
     var option = DialogueOption.instance()
     option.text = content.options[i].label
     _options_container.add_child(option)
-    option.connect("confirm_option", self, "_on_option_selected", [ i + 1 ])
+    option.connect("confirm_option", self, "_on_option_selected", [ i ])
 
   if content.get("name") != null:
     set_text(content.name)
-    show_text()
 
   _options_container.show()
 
