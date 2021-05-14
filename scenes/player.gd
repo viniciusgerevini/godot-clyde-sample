@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+export (String) var id = "player"
+export (String) var character_name
+export (String, "F", "M") var pronoun = "F"
+
 var _speed = 100
 var _velocity = Vector2()
 var _target

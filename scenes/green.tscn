@@ -24,6 +24,7 @@ modulate = Color( 0.345098, 0.894118, 0.145098, 1 )
 position = Vector2( 71.4901, 111.027 )
 frames = SubResource( 3 )
 animation = "idle"
+frame = 1
 playing = true
 script = ExtResource( 2 )
 id = "green"

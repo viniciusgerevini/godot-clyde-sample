@@ -274,7 +274,6 @@ flip_h = true
 
 [node name="blue" parent="." instance=ExtResource( 4 )]
 position = Vector2( 283.987, 78.8134 )
-frame = 0
 flip_h = true
 
 [node name="mr_pink" parent="." instance=ExtResource( 2 )]
@@ -301,6 +300,7 @@ position = Vector2( 223.446, 183.141 )
 "dialogue_container",
 ] instance=ExtResource( 9 )]
 visible = false
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 9
 

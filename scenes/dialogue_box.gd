@@ -31,7 +31,7 @@ func set_text(text):
 
 
 func set_speaker_name(speaker_name):
-  _speaker_name_field.text = speaker_name
+  _speaker_name_field.text = speaker_name if speaker_name != null else  ""
 
 
 func show_options(content):
@@ -51,8 +51,12 @@ func show_options(content):
   _options_container.show()
 
 
-func set_portrait(id):
-  _portrait.set_portrait(id)
+func set_portrait(id, emotion = "idle"):
+  _portrait.set_portrait(id, emotion)
+
+
+func set_portrait_emotion(emotion):
+  _portrait.change_emotion(emotion)
 
 
 func _on_option_selected(id):

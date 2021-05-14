@@ -1,0 +1,12 @@
+npc:    Hello, brother! { when player_pronoun is "M" }
+npc:    Hello, sister! { when player_pronoun is "F" }
+npc:    Hello there! { when not player_pronoun }
+player: Hello, %npc_name%!
+
+{ location }
+  npc: What are you doing here in the %location%?
+  { location == "Beach" and not progression_blue_was_killed }
+    player: What??
+    npc: Do you want Blue to go away?
+    player: Yes!
+    npc: Considered done! { trigger kill_blue } { set progression_blue_was_killed = true }

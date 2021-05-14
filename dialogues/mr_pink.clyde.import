@@ -1,0 +1,13 @@
+[remap]
+
+importer="clyde.dialogue"
+type="PackedDataContainer"
+path="res://.import/mr_pink.clyde-b75c9e1cf7730a6061442f7f5f5671b8.res"
+
+[deps]
+
+source_file="res://dialogues/mr_pink.clyde"
+dest_files=[ "res://.import/mr_pink.clyde-b75c9e1cf7730a6061442f7f5f5671b8.res" ]
+
+[params]
+
