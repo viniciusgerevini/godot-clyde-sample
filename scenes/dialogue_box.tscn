@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/dialogue_option.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/dialogue_box.gd" type="Script" id=2]
+[ext_resource path="res://fonts/font_10.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/portrait.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_top = 10.0
+bg_color = Color( 0.133333, 0.133333, 0.133333, 1 )
+
+[node name="dialogue_box" type="MarginContainer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 100 )
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="container" type="PanelContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 475.0
+margin_bottom = 95.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="container"]
+margin_top = 10.0
+margin_right = 470.0
+margin_bottom = 90.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="container/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 100, 0 )
+custom_constants/margin_bottom = 5
+
+[node name="char_name" type="Label" parent="container/HBoxContainer/MarginContainer"]
+margin_top = 65.0
+margin_right = 100.0
+margin_bottom = 75.0
+size_flags_vertical = 8
+custom_fonts/font = ExtResource( 3 )
+align = 1
+
+[node name="portrait" parent="container/HBoxContainer/MarginContainer" instance=ExtResource( 4 )]
+position = Vector2( 43, 23 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="container/HBoxContainer"]
+margin_left = 104.0
+margin_right = 470.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+
+[node name="text" type="RichTextLabel" parent="container/HBoxContainer/VBoxContainer"]
+margin_right = 366.0
+margin_bottom = 11.0
+custom_fonts/normal_font = ExtResource( 3 )
+text = "Hello"
+fit_content_height = true
+
+[node name="options_margin" type="MarginContainer" parent="container/HBoxContainer/VBoxContainer"]
+margin_top = 21.0
+margin_right = 366.0
+margin_bottom = 21.0
+custom_constants/margin_left = 10
+
+[node name="options" type="VBoxContainer" parent="container/HBoxContainer/VBoxContainer/options_margin"]
+visible = false
+margin_left = 10.0
+margin_right = 366.0
+margin_bottom = 10.0
+custom_constants/separation = 10
+
+[node name="option" parent="container/HBoxContainer/VBoxContainer/options_margin/options" instance=ExtResource( 1 )]
+margin_right = 356.0
+margin_bottom = 10.0
+
+[node name="text_timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[connection signal="timeout" from="text_timer" to="." method="_on_text_timer_timeout"]

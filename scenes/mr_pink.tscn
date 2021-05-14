@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://sprites/0x72_DungeonTilesetII_v1.3.png" type="Texture" id=1]
+[ext_resource path="res://scenes/npc.gd" type="Script" id=2]
+[ext_resource path="res://sprites/mr_pink.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 96, 16, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 96, 16, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 4.0
+} ]
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 500, 794 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 500, 0, 500, 794 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1000, 0, 500, 794 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "sad",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "serious",
+"speed": 5.0
+} ]
+
+[node name="mr_pink" type="AnimatedSprite"]
+self_modulate = Color( 0.984314, 0, 0.945098, 1 )
+position = Vector2( 71.4901, 111.027 )
+frames = SubResource( 3 )
+animation = "idle"
+frame = 1
+playing = true
+script = ExtResource( 2 )
+id = "mr_pink"
+character_name = "Mr Pink"
+pronoun = "M"
+
+[node name="head" type="AnimatedSprite" parent="."]
+position = Vector2( 0.570923, 1.28003 )
+scale = Vector2( 0.05, 0.05 )
+frames = SubResource( 7 )
+animation = "idle"

@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/dialogue_option.gd" type="Script" id=1]
+[ext_resource path="res://fonts/font_10.tres" type="DynamicFont" id=2]
+
+[node name="option" type="Label"]
+margin_right = 361.0
+margin_bottom = 14.0
+mouse_filter = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Option 1"
+autowrap = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="." to="." method="_on_option_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_option_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_option_mouse_exited"]
