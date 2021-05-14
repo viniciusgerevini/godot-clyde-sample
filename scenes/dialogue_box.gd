@@ -1,5 +1,6 @@
 extends MarginContainer
 
+signal next_content_requested
 signal option_selected(option_index)
 
 const DialogueOption = preload("res://scenes/dialogue_option.tscn")
@@ -9,10 +10,13 @@ onready var _text_field = $container/HBoxContainer/VBoxContainer/text
 onready var _options_container = $container/HBoxContainer/VBoxContainer/options_margin/options
 onready var _portrait = $container/HBoxContainer/MarginContainer/portrait
 
+var has_options_available = false
 
 func _on_text_timer_timeout():
   if has_pending_text():
     _text_field.visible_characters += 1
+  elif has_options_available:
+    _options_container.modulate.a = 1
 
 
 func show_text():
@@ -28,6 +32,7 @@ func set_text(text):
   _text_field.visible_characters = 0
   _text_field.show()
   _options_container.hide()
+  has_options_available = false
 
 
 func set_speaker_name(speaker_name):
@@ -48,6 +53,8 @@ func set_options(content):
     set_text(content.name)
 
   _options_container.show()
+  _options_container.modulate.a = 0
+  has_options_available = true
 
 
 func set_portrait(id, emotion = "idle"):
@@ -60,3 +67,10 @@ func set_portrait_emotion(emotion):
 
 func _on_option_selected(id):
   emit_signal("option_selected", id)
+
+func _gui_input(event):
+  if has_options_available:
+    return
+
+  if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+    emit_signal("next_content_requested")

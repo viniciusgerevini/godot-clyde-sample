@@ -26,6 +26,8 @@ func start_dialogue(dialogue_name, speakers = {}):
   _dialogue_box.show()
   # warning-ignore:return_value_discarded
   _dialogue_box.connect("option_selected", self, "_on_option_selected")
+  # warning-ignore:return_value_discarded
+  _dialogue_box.connect("next_content_requested", self, "next_content")
   _dialogue = ClydeDialogue.new()
 
   if dialogue_parts.size() == 2:
@@ -67,6 +69,8 @@ func _finish_dialogue():
   _dialogue_box.hide()
   # warning-ignore:return_value_discarded
   _dialogue_box.disconnect("option_selected", self, "_on_option_selected")
+  # warning-ignore:return_value_discarded
+  _dialogue_box.disconnect("next_content_requested", self, "next_content")
   _current_dialogue = null
   _current_dialogue_file = null
   _current_dialogue_block = null

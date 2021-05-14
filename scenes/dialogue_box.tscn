@@ -15,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 rect_min_size = Vector2( 0, 100 )
+mouse_filter = 1
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -29,6 +30,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 475.0
 margin_bottom = 95.0
+mouse_filter = 1
 custom_styles/panel = SubResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="container"]
@@ -41,6 +43,7 @@ size_flags_vertical = 3
 margin_right = 100.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 100, 0 )
+mouse_filter = 1
 custom_constants/margin_bottom = 5
 
 [node name="char_name" type="Label" parent="container/HBoxContainer/MarginContainer"]
@@ -65,6 +68,7 @@ custom_constants/separation = 10
 [node name="text" type="RichTextLabel" parent="container/HBoxContainer/VBoxContainer"]
 margin_right = 366.0
 margin_bottom = 11.0
+mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 3 )
 text = "Hello"
 fit_content_height = true

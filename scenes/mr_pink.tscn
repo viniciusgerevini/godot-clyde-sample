@@ -58,6 +58,7 @@ self_modulate = Color( 0.984314, 0, 0.945098, 1 )
 position = Vector2( 71.4901, 111.027 )
 frames = SubResource( 3 )
 animation = "idle"
+frame = 1
 playing = true
 script = ExtResource( 2 )
 id = "mr_pink"

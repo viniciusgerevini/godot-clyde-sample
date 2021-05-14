@@ -8,7 +8,7 @@ var _speed = 100
 var _velocity = Vector2()
 var _target
 
-func _physics_process(delta):
+func _physics_process(_delta):
   if _target:
     _velocity = self.position.direction_to(_target) * _speed
     if self.position.distance_to(_target) > 30:

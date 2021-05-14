@@ -31,19 +31,27 @@ func _dialogue_input(event):
 
 
 func _on_green_interaction_area_area_clicked():
+  if _is_dialogue_in_progress:
+    return
   Dialogue.start_dialogue("npc#murder", { "player": $player, "npc": $green })
   Dialogue.set_variable("location", "Beach")
 
 
 func _on_pink_interaction_area_area_clicked():
+  if _is_dialogue_in_progress:
+    return
   Dialogue.start_dialogue("mr_pink", { "player": $player, "mr_pink": $mr_pink })
 
 
 func _on_red_interaction_area2_area_clicked():
+  if _is_dialogue_in_progress:
+    return
   Dialogue.start_dialogue("npc", { "player": $player, "npc": $red })
   Dialogue.set_variable("location", "Cave")
 
 func _on_blue_interaction_area3_area_clicked():
+  if _is_dialogue_in_progress:
+    return
   Dialogue.start_dialogue("npc", { "player": $player, "npc": $blue })
   Dialogue.set_variable("location", "Dungeon")
 
