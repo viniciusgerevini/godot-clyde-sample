@@ -14,23 +14,21 @@ script = ExtResource( 5 )
 [node name="blue" parent="." instance=ExtResource( 2 )]
 visible = false
 position = Vector2( 0, -6 )
-frame = 0
 
 [node name="green" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 0, -5.75 )
-frame = 0
 
 [node name="mr_pink" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 0, -6 )
-frame = 1
+frame = 0
 
 [node name="red" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 0, -5.5 )
-frame = 0
 
 [node name="player" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( 0, -5.5 )
+frame = 1

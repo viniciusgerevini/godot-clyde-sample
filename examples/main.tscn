@@ -300,7 +300,6 @@ position = Vector2( 223.446, 183.141 )
 "dialogue_container",
 ] instance=ExtResource( 9 )]
 visible = false
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 9
 

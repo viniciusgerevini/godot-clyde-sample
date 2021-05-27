@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/player_portrait.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="player" type="KinematicBody2D"]
 collision_layer = 3
@@ -15,4 +15,4 @@ frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -10 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
