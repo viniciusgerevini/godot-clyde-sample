@@ -2,7 +2,7 @@
 
 This is an example of how to use [Clyde Dialogue](https://github.com/viniciusgerevini/godot-clyde-dialogue) in Godot.
 
-To see it done step-by-step check [this video]().
+To see it done step-by-step check [this video](https://www.youtube.com/watch?v=jcLlpylYeyw).
 
 ## About Clyde
 
